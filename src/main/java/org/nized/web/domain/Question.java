@@ -9,10 +9,11 @@ public class Question {
 	 */
 
 	private int id;
-	private int surveyId;
-	private String questionText;
-	private List<PossibleAnswer> possibleAnswers;
-	private List<String> roles;
+	private Survey survey; // From survey_id in DB
+	private String question_text;
+	private List<PossibleAnswer> possible_answers;
+	private List<Role> roles;
+	private typeEnum type;
 
 	public int getId() {
 		return id;
@@ -22,36 +23,40 @@ public class Question {
 		this.id = id;
 	}
 
-	public int getSurveyId() {
-		return surveyId;
+	public Survey getSurvey() {
+		return survey;
 	}
 
-	public void setSurveyId(int surveyId) {
-		this.surveyId = surveyId;
+	public void setSurveyId(Survey survey) {
+		this.survey = survey;
 	}
 
 	public String getQuestionText() {
-		return questionText;
+		return question_text;
 	}
 
 	public void setQuestionText(String questionText) {
-		this.questionText = questionText;
+		this.question_text = questionText;
 	}
 
 	public List<PossibleAnswer> getPossibleAnswers() {
-		return possibleAnswers;
+		return possible_answers;
 	}
 
-	public void setPossibleAnswers(List<PossibleAnswer> possibleAnswers) {
-		this.possibleAnswers = possibleAnswers;
+	public void setPossibleAnswers(List<PossibleAnswer> possible_answers) {
+		this.possible_answers = possible_answers;
 	}
 
-	public List<String> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<String> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public enum typeEnum {
+		RADIO, CHECKBOX, TEXT
 	}
 
 	@Override
@@ -59,10 +64,11 @@ public class Question {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + ((possibleAnswers == null) ? 0 : possibleAnswers.hashCode());
-		result = prime * result + ((questionText == null) ? 0 : questionText.hashCode());
+		result = prime * result + ((possible_answers == null) ? 0 : possible_answers.hashCode());
+		result = prime * result + ((question_text == null) ? 0 : question_text.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
-		result = prime * result + surveyId;
+		result = prime * result + ((survey == null) ? 0 : survey.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
 
@@ -81,18 +87,18 @@ public class Question {
 		if (id != other.id) {
 			return false;
 		}
-		if (possibleAnswers == null) {
-			if (other.possibleAnswers != null) {
+		if (possible_answers == null) {
+			if (other.possible_answers != null) {
 				return false;
 			}
-		} else if (!possibleAnswers.equals(other.possibleAnswers)) {
+		} else if (!possible_answers.equals(other.possible_answers)) {
 			return false;
 		}
-		if (questionText == null) {
-			if (other.questionText != null) {
+		if (question_text == null) {
+			if (other.question_text != null) {
 				return false;
 			}
-		} else if (!questionText.equals(other.questionText)) {
+		} else if (!question_text.equals(other.question_text)) {
 			return false;
 		}
 		if (roles == null) {
@@ -102,7 +108,14 @@ public class Question {
 		} else if (!roles.equals(other.roles)) {
 			return false;
 		}
-		if (surveyId != other.surveyId) {
+		if (survey == null) {
+			if (other.survey != null) {
+				return false;
+			}
+		} else if (!survey.equals(other.survey)) {
+			return false;
+		}
+		if (type != other.type) {
 			return false;
 		}
 		return true;
@@ -110,8 +123,9 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "Question [id=" + id + ", surveyId=" + surveyId + ", questionText=" + questionText
-				+ ", possibleAnswers=" + possibleAnswers + ", roles=" + roles + "]";
+		return "Question [id=" + id + ", survey=" + survey + ", questionText=" + question_text
+				+ ", possible_answers=" + possible_answers + ", roles=" + roles + ", type=" + type
+				+ "]";
 	}
 
 }

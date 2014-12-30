@@ -6,12 +6,12 @@ import java.util.List;
 public class Announcement {
 
 	private int id;
-	private Person creator;
+	private Person creator; // email of person who created it is what's passed to serializer
 	private String title;
 	private String text;
-	private Date startDate;
-	private Date endDate;
-	private List<String> roles;
+	private Date start_date;
+	private Date end_date;
+	private List<Role> roles;
 
 	public int getId() {
 		return id;
@@ -46,26 +46,26 @@ public class Announcement {
 	}
 
 	public Date getStartDate() {
-		return startDate;
+		return start_date;
 	}
 
 	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+		this.start_date = startDate;
 	}
 
 	public Date getEndDate() {
-		return endDate;
+		return end_date;
 	}
 
 	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+		this.end_date = endDate;
 	}
 
-	public List<String> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<String> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 
@@ -74,10 +74,10 @@ public class Announcement {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((creator == null) ? 0 : creator.hashCode());
-		result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
+		result = prime * result + ((end_date == null) ? 0 : end_date.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
-		result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+		result = prime * result + ((start_date == null) ? 0 : start_date.hashCode());
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
@@ -102,11 +102,11 @@ public class Announcement {
 		} else if (!creator.equals(other.creator)) {
 			return false;
 		}
-		if (endDate == null) {
-			if (other.endDate != null) {
+		if (end_date == null) {
+			if (other.end_date != null) {
 				return false;
 			}
-		} else if (!endDate.equals(other.endDate)) {
+		} else if (!end_date.equals(other.end_date)) {
 			return false;
 		}
 		if (id != other.id) {
@@ -119,11 +119,11 @@ public class Announcement {
 		} else if (!roles.equals(other.roles)) {
 			return false;
 		}
-		if (startDate == null) {
-			if (other.startDate != null) {
+		if (start_date == null) {
+			if (other.start_date != null) {
 				return false;
 			}
-		} else if (!startDate.equals(other.startDate)) {
+		} else if (!start_date.equals(other.start_date)) {
 			return false;
 		}
 		if (text == null) {
@@ -146,7 +146,7 @@ public class Announcement {
 	@Override
 	public String toString() {
 		return "Announcement [id=" + id + ", creator=" + creator + ", title=" + title + ", text="
-				+ text + ", startDate=" + startDate + ", endDate=" + endDate + ", roles=" + roles
+				+ text + ", startDate=" + start_date + ", endDate=" + end_date + ", roles=" + roles
 				+ "]";
 	}
 

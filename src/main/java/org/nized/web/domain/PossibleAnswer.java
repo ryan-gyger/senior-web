@@ -7,7 +7,7 @@ public class PossibleAnswer {
 	 */
 
 	private int id;
-	private int questionId;
+	private Question question; // from question_id in DB
 	private String text;
 
 	public int getId() {
@@ -18,12 +18,12 @@ public class PossibleAnswer {
 		this.id = id;
 	}
 
-	public int getQuestionId() {
-		return questionId;
+	public Question getQuestion() {
+		return question;
 	}
 
-	public void setQuestionId(int questionId) {
-		this.questionId = questionId;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
 	public String getText() {
@@ -39,7 +39,7 @@ public class PossibleAnswer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + questionId;
+		result = prime * result + ((question == null) ? 0 : question.hashCode());
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		return result;
 	}
@@ -59,7 +59,11 @@ public class PossibleAnswer {
 		if (id != other.id) {
 			return false;
 		}
-		if (questionId != other.questionId) {
+		if (question == null) {
+			if (other.question != null) {
+				return false;
+			}
+		} else if (!question.equals(other.question)) {
 			return false;
 		}
 		if (text == null) {
@@ -74,7 +78,7 @@ public class PossibleAnswer {
 
 	@Override
 	public String toString() {
-		return "PossibleAnswer [id=" + id + ", questionId=" + questionId + ", text=" + text + "]";
+		return "PossibleAnswer [id=" + id + ", question=" + question + ", text=" + text + "]";
 	}
 
 }

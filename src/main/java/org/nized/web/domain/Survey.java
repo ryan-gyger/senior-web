@@ -8,12 +8,11 @@ public class Survey {
 	/*
 	 * id creator name start_date end_date questions roles
 	 */
-
 	private int id;
 	private Person creator;
 	private String name;
-	private Date startDate;
-	private Date endDate;
+	private Date start_date;
+	private Date end_date;
 	private List<Question> questions;
 	private List<Role> roles;
 
@@ -42,19 +41,19 @@ public class Survey {
 	}
 
 	public Date getStartDate() {
-		return startDate;
+		return start_date;
 	}
 
 	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
+		this.start_date = startDate;
 	}
 
 	public Date getEndDate() {
-		return endDate;
+		return end_date;
 	}
 
 	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+		this.end_date = endDate;
 	}
 
 	public List<Question> getQuestions() {

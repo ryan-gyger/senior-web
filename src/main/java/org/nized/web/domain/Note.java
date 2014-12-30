@@ -7,8 +7,8 @@ public class Note {
 	 */
 
 	private int id;
-	private String personEmail;
-	private String publicToPerson;
+	private Person person; // from person_email in DB
+	private boolean public_to_person;
 	private String title;
 	private String text;
 
@@ -20,20 +20,20 @@ public class Note {
 		this.id = id;
 	}
 
-	public String getPersonEmail() {
-		return personEmail;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setPersonEmail(String personEmail) {
-		this.personEmail = personEmail;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
-	public String getPublicToPerson() {
-		return publicToPerson;
+	public boolean getPublicToPerson() {
+		return public_to_person;
 	}
 
-	public void setPublicToPerson(String publicToPerson) {
-		this.publicToPerson = publicToPerson;
+	public void setPublicToPerson(boolean publicToPerson) {
+		this.public_to_person = publicToPerson;
 	}
 
 	public String getTitle() {
@@ -57,8 +57,8 @@ public class Note {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + ((personEmail == null) ? 0 : personEmail.hashCode());
-		result = prime * result + ((publicToPerson == null) ? 0 : publicToPerson.hashCode());
+		result = prime * result + ((person == null) ? 0 : person.hashCode());
+		result = prime * result + (public_to_person ? 1231 : 1237);
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
@@ -79,18 +79,14 @@ public class Note {
 		if (id != other.id) {
 			return false;
 		}
-		if (personEmail == null) {
-			if (other.personEmail != null) {
+		if (person == null) {
+			if (other.person != null) {
 				return false;
 			}
-		} else if (!personEmail.equals(other.personEmail)) {
+		} else if (!person.equals(other.person)) {
 			return false;
 		}
-		if (publicToPerson == null) {
-			if (other.publicToPerson != null) {
-				return false;
-			}
-		} else if (!publicToPerson.equals(other.publicToPerson)) {
+		if (public_to_person != other.public_to_person) {
 			return false;
 		}
 		if (text == null) {
@@ -112,8 +108,8 @@ public class Note {
 
 	@Override
 	public String toString() {
-		return "Note [id=" + id + ", personEmail=" + personEmail + ", publicToPerson="
-				+ publicToPerson + ", title=" + title + ", text=" + text + "]";
+		return "Note [id=" + id + ", person=" + person + ", publicToPerson=" + public_to_person
+				+ ", title=" + title + ", text=" + text + "]";
 	}
 
 }

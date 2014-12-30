@@ -2,12 +2,12 @@ package org.nized.web.domain;
 
 public class ClassBonus {
 
-	/*
-	 * id course_code semester
+	/* 
+	 * 
 	 */
 
 	private int id;
-	private String courseCode;
+	private String course_code;
 	private String semester;
 
 	public int getId() {
@@ -19,11 +19,11 @@ public class ClassBonus {
 	}
 
 	public String getCourseCode() {
-		return courseCode;
+		return course_code;
 	}
 
 	public void setCourseCode(String courseCode) {
-		this.courseCode = courseCode;
+		this.course_code = courseCode;
 	}
 
 	public String getSemester() {
@@ -38,7 +38,7 @@ public class ClassBonus {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((courseCode == null) ? 0 : courseCode.hashCode());
+		result = prime * result + ((course_code == null) ? 0 : course_code.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((semester == null) ? 0 : semester.hashCode());
 		return result;
@@ -56,11 +56,11 @@ public class ClassBonus {
 			return false;
 		}
 		ClassBonus other = (ClassBonus) obj;
-		if (courseCode == null) {
-			if (other.courseCode != null) {
+		if (course_code == null) {
+			if (other.course_code != null) {
 				return false;
 			}
-		} else if (!courseCode.equals(other.courseCode)) {
+		} else if (!course_code.equals(other.course_code)) {
 			return false;
 		}
 		if (id != other.id) {
@@ -78,7 +78,7 @@ public class ClassBonus {
 
 	@Override
 	public String toString() {
-		return "ClassBonus [id=" + id + ", courseCode=" + courseCode + ", semester=" + semester
+		return "ClassBonus [id=" + id + ", courseCode=" + course_code + ", semester=" + semester
 				+ "]";
 	}
 

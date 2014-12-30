@@ -1,32 +1,28 @@
 package org.nized.web.domain;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-
-import org.nized.web.api.PersonDeserializer;
-import org.nized.web.api.PersonSerializer;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-@JsonSerialize(using = PersonSerializer.class)
-@JsonDeserialize(using = PersonDeserializer.class)
+@JsonSerialize
+@JsonDeserialize
 public class Person {
 
 	private String email;
 	private String password;
-	private String firstName;
-	private String lastName;
-	private Date expireDate;
-	private BigDecimal mobileNumber;
-	private boolean isLocalPaid;
-	private boolean isMember;
-	private classYearEnum classYear;
-	private Date lastSyncDate;
+	private String first_name;
+	private String last_name;
+	private Date expire_date;
+	private String mobile_number;
+	private localPaidEnum is_local_paid;
+	private boolean is_member;
+	private classYearEnum class_year;
+	private Date last_sync_date;
 	private List<Checkin> checkins;
-	private List<String> classBonuses;
-	private List<String> roles;
+	private List<ClassBonus> class_bonuses;
+	private List<Role> roles;
 
 	public String getEmail() {
 		return email;
@@ -45,67 +41,67 @@ public class Person {
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return first_name;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.first_name = firstName;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return last_name;
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.last_name = lastName;
 	}
 
 	public Date getExpireDate() {
-		return expireDate;
+		return expire_date;
 	}
 
 	public void setExpireDate(Date expireDate) {
-		this.expireDate = expireDate;
+		this.expire_date = expireDate;
 	}
 
-	public BigDecimal getMobileNumber() {
-		return mobileNumber;
+	public String getMobileNumber() {
+		return mobile_number;
 	}
 
-	public void setMobileNumber(BigDecimal mobileNumber) {
-		this.mobileNumber = mobileNumber;
+	public void setMobileNumber(String mobileNumber) {
+		this.mobile_number = mobileNumber;
 	}
 
-	public boolean isLocalPaid() {
-		return isLocalPaid;
+	public localPaidEnum isLocalPaid() {
+		return is_local_paid;
 	}
 
-	public void setLocalPaid(boolean isLocalPaid) {
-		this.isLocalPaid = isLocalPaid;
+	public void setLocalPaid(localPaidEnum isLocalPaid) {
+		this.is_local_paid = isLocalPaid;
 	}
 
 	public boolean isMember() {
-		return isMember;
+		return is_member;
 	}
 
 	public void setMember(boolean isMember) {
-		this.isMember = isMember;
+		this.is_member = isMember;
 	}
 
 	public classYearEnum getClassYear() {
-		return classYear;
+		return class_year;
 	}
 
 	public void setClassYear(classYearEnum classYear) {
-		this.classYear = classYear;
+		this.class_year = classYear;
 	}
 
 	public Date getLastSyncDate() {
-		return lastSyncDate;
+		return last_sync_date;
 	}
 
 	public void setLastSyncDate(Date lastSyncDate) {
-		this.lastSyncDate = lastSyncDate;
+		this.last_sync_date = lastSyncDate;
 	}
 
 	public List<Checkin> getCheckins() {
@@ -116,19 +112,19 @@ public class Person {
 		this.checkins = checkins;
 	}
 
-	public List<String> getClassBonuses() {
-		return classBonuses;
+	public List<ClassBonus> getClassBonuses() {
+		return class_bonuses;
 	}
 
-	public void setClassBonuses(List<String> classBonuses) {
-		this.classBonuses = classBonuses;
+	public void setClassBonuses(List<ClassBonus> classBonuses) {
+		this.class_bonuses = classBonuses;
 	}
 
-	public List<String> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<String> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 
@@ -136,21 +132,25 @@ public class Person {
 		FRESHMAN, SOPHOMORE, JUNIOR, SENIOR
 	}
 
+	public enum localPaidEnum {
+		TRUE, FALSE, PENDING
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((checkins == null) ? 0 : checkins.hashCode());
-		result = prime * result + ((classBonuses == null) ? 0 : classBonuses.hashCode());
-		result = prime * result + ((classYear == null) ? 0 : classYear.hashCode());
+		result = prime * result + ((class_bonuses == null) ? 0 : class_bonuses.hashCode());
+		result = prime * result + ((class_year == null) ? 0 : class_year.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((expireDate == null) ? 0 : expireDate.hashCode());
-		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-		result = prime * result + (isLocalPaid ? 1231 : 1237);
-		result = prime * result + (isMember ? 1231 : 1237);
-		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((lastSyncDate == null) ? 0 : lastSyncDate.hashCode());
-		result = prime * result + ((mobileNumber == null) ? 0 : mobileNumber.hashCode());
+		result = prime * result + ((expire_date == null) ? 0 : expire_date.hashCode());
+		result = prime * result + ((first_name == null) ? 0 : first_name.hashCode());
+		result = prime * result + ((is_local_paid == null) ? 0 : is_local_paid.hashCode());
+		result = prime * result + (is_member ? 1231 : 1237);
+		result = prime * result + ((last_name == null) ? 0 : last_name.hashCode());
+		result = prime * result + ((last_sync_date == null) ? 0 : last_sync_date.hashCode());
+		result = prime * result + ((mobile_number == null) ? 0 : mobile_number.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		return result;
@@ -158,79 +158,105 @@ public class Person {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Person other = (Person) obj;
 		if (checkins == null) {
-			if (other.checkins != null)
+			if (other.checkins != null) {
 				return false;
-		} else if (!checkins.equals(other.checkins))
+			}
+		} else if (!checkins.equals(other.checkins)) {
 			return false;
-		if (classBonuses == null) {
-			if (other.classBonuses != null)
+		}
+		if (class_bonuses == null) {
+			if (other.class_bonuses != null) {
 				return false;
-		} else if (!classBonuses.equals(other.classBonuses))
+			}
+		} else if (!class_bonuses.equals(other.class_bonuses)) {
 			return false;
-		if (classYear != other.classYear)
+		}
+		if (class_year != other.class_year) {
 			return false;
+		}
 		if (email == null) {
-			if (other.email != null)
+			if (other.email != null) {
 				return false;
-		} else if (!email.equals(other.email))
+			}
+		} else if (!email.equals(other.email)) {
 			return false;
-		if (expireDate == null) {
-			if (other.expireDate != null)
+		}
+		if (expire_date == null) {
+			if (other.expire_date != null) {
 				return false;
-		} else if (!expireDate.equals(other.expireDate))
+			}
+		} else if (!expire_date.equals(other.expire_date)) {
 			return false;
-		if (firstName == null) {
-			if (other.firstName != null)
+		}
+		if (first_name == null) {
+			if (other.first_name != null) {
 				return false;
-		} else if (!firstName.equals(other.firstName))
+			}
+		} else if (!first_name.equals(other.first_name)) {
 			return false;
-		if (isLocalPaid != other.isLocalPaid)
+		}
+		if (is_local_paid != other.is_local_paid) {
 			return false;
-		if (isMember != other.isMember)
+		}
+		if (is_member != other.is_member) {
 			return false;
-		if (lastName == null) {
-			if (other.lastName != null)
+		}
+		if (last_name == null) {
+			if (other.last_name != null) {
 				return false;
-		} else if (!lastName.equals(other.lastName))
+			}
+		} else if (!last_name.equals(other.last_name)) {
 			return false;
-		if (lastSyncDate == null) {
-			if (other.lastSyncDate != null)
+		}
+		if (last_sync_date == null) {
+			if (other.last_sync_date != null) {
 				return false;
-		} else if (!lastSyncDate.equals(other.lastSyncDate))
+			}
+		} else if (!last_sync_date.equals(other.last_sync_date)) {
 			return false;
-		if (mobileNumber == null) {
-			if (other.mobileNumber != null)
+		}
+		if (mobile_number == null) {
+			if (other.mobile_number != null) {
 				return false;
-		} else if (!mobileNumber.equals(other.mobileNumber))
+			}
+		} else if (!mobile_number.equals(other.mobile_number)) {
 			return false;
+		}
 		if (password == null) {
-			if (other.password != null)
+			if (other.password != null) {
 				return false;
-		} else if (!password.equals(other.password))
+			}
+		} else if (!password.equals(other.password)) {
 			return false;
+		}
 		if (roles == null) {
-			if (other.roles != null)
+			if (other.roles != null) {
 				return false;
-		} else if (!roles.equals(other.roles))
+			}
+		} else if (!roles.equals(other.roles)) {
 			return false;
+		}
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Person [email=" + email + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", expireDate=" + expireDate + ", mobileNumber="
-				+ mobileNumber + ", isLocalPaid=" + isLocalPaid + ", isMember=" + isMember
-				+ ", classYear=" + classYear + ", lastSyncDate=" + lastSyncDate + ", checkins="
-				+ checkins + ", classBonuses=" + classBonuses + ", roles=" + roles + "]";
+		return "Person [email=" + email + ", password=" + password + ", firstName=" + first_name
+				+ ", lastName=" + last_name + ", expireDate=" + expire_date + ", mobileNumber="
+				+ mobile_number + ", isLocalPaid=" + is_local_paid + ", isMember=" + is_member
+				+ ", classYear=" + class_year + ", lastSyncDate=" + last_sync_date + ", checkins="
+				+ checkins + ", classBonuses=" + class_bonuses + ", roles=" + roles + "]";
 	};
 
 }
