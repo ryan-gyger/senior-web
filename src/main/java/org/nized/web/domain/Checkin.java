@@ -2,6 +2,11 @@ package org.nized.web.domain;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@JsonSerialize
+@JsonDeserialize
 public class Checkin {
 
 	private Person person; // Based on email stored in DB

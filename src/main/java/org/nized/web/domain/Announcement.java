@@ -3,10 +3,16 @@ package org.nized.web.domain;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@JsonSerialize
+@JsonDeserialize
 public class Announcement {
 
 	private int id;
-	private Person creator; // email of person who created it is what's passed to serializer
+	private Person creator; // email of person who created it is what's passed
+							// to serializer
 	private String title;
 	private String text;
 	private Date start_date;
